@@ -10,7 +10,9 @@ import (
 type userService struct {
 	userRepo repositories.UserRepository
 }
-type UserService interface{}
+type UserService interface {
+	Create(req *dto.CreateUserRequest) (*dto.UserResponse, error)
+}
 
 func NewUserService(userRepo repositories.UserRepository) UserService {
 	return &userService{
